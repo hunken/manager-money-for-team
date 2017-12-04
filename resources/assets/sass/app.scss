@@ -1,0 +1,471 @@
+// Fonts
+//@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+// Variables
+//@import "variables";
+
+// Bootstrap
+//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+/**
+ * Preload full page
+ */
+.x_panel {
+    .preloader {
+        display: none;
+    }
+    &.preload  .content-dashboard {
+        width: 100%;
+        height: 100%;
+        opacity: 0.36;
+    }
+    &.preload .preloader {
+        display: block;
+        z-index: 999;
+    }
+}
+.chartPreload {
+    z-index: 99;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: none;
+}
+
+.chartPreload.active {
+    display: block;
+}
+
+.chartPreload .cssload-loader {
+    width: 112px;
+    height: 19px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.chartPreload .cssload-loader > div {
+    content: " ";
+    width: 19px;
+    height: 19px;
+    background: #2196f3;
+    border-radius: 100%;
+    position: absolute;
+    animation: cssload-shift 2.3s linear infinite;
+    -o-animation: cssload-shift 2.3s linear infinite;
+    -ms-animation: cssload-shift 2.3s linear infinite;
+    -webkit-animation: cssload-shift 2.3s linear infinite;
+    -moz-animation: cssload-shift 2.3s linear infinite;
+}
+
+.chartPreload .cssload-loader > div:nth-of-type(1) {
+    animation-delay: -0.46s;
+    -o-animation-delay: -0.46s;
+    -ms-animation-delay: -0.46s;
+    -webkit-animation-delay: -0.46s;
+    -moz-animation-delay: -0.46s;
+}
+
+.chartPreload .cssload-loader > div:nth-of-type(2) {
+    animation-delay: -0.92s;
+    -o-animation-delay: -0.92s;
+    -ms-animation-delay: -0.92s;
+    -webkit-animation-delay: -0.92s;
+    -moz-animation-delay: -0.92s;
+}
+
+.chartPreload .cssload-loader > div:nth-of-type(3) {
+    animation-delay: -1.38s;
+    -o-animation-delay: -1.38s;
+    -ms-animation-delay: -1.38s;
+    -webkit-animation-delay: -1.38s;
+    -moz-animation-delay: -1.38s;
+}
+
+.chartPreload .cssload-loader > div:nth-of-type(4) {
+    animation-delay: -1.84s;
+    -o-animation-delay: -1.84s;
+    -ms-animation-delay: -1.84s;
+    -webkit-animation-delay: -1.84s;
+    -moz-animation-delay: -1.84s;
+}
+
+@keyframes cssload-shift {
+    0% {
+        left: -58px;
+        opacity: 0;
+        background-color: rgb(101, 177, 235);
+    }
+    10% {
+        left: 0;
+        opacity: 1;
+    }
+    90% {
+        left: 97px;
+        opacity: 1;
+    }
+    100% {
+        left: 156px;
+        background-color: rgb(14, 79, 158);
+        opacity: 0;
+    }
+}
+
+@-o-keyframes cssload-shift {
+    0% {
+        left: -58px;
+        opacity: 0;
+        background-color: rgb(101, 177, 235);
+    }
+    10% {
+        left: 0;
+        opacity: 1;
+    }
+    90% {
+        left: 97px;
+        opacity: 1;
+    }
+    100% {
+        left: 156px;
+        background-color: rgb(14, 79, 158);
+        opacity: 0;
+    }
+}
+
+@-ms-keyframes cssload-shift {
+    0% {
+        left: -58px;
+        opacity: 0;
+        background-color: rgb(101, 177, 235);
+    }
+    10% {
+        left: 0;
+        opacity: 1;
+    }
+    90% {
+        left: 97px;
+        opacity: 1;
+    }
+    100% {
+        left: 156px;
+        background-color: rgb(14, 79, 158);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes cssload-shift {
+    0% {
+        left: -58px;
+        opacity: 0;
+        background-color: rgb(101, 177, 235);
+    }
+    10% {
+        left: 0;
+        opacity: 1;
+    }
+    90% {
+        left: 97px;
+        opacity: 1;
+    }
+    100% {
+        left: 156px;
+        background-color: rgb(14, 79, 158);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes cssload-shift {
+    0% {
+        left: -58px;
+        opacity: 0;
+        background-color: rgb(101, 177, 235);
+    }
+    10% {
+        left: 0;
+        opacity: 1;
+    }
+    90% {
+        left: 97px;
+        opacity: 1;
+    }
+    100% {
+        left: 156px;
+        background-color: rgb(14, 79, 158);
+        opacity: 0;
+    }
+}
+
+/*
+ * Page Preload
+ */
+@for $i from 1 through 6 {
+    @keyframes preload-show-#{$i}{
+        from {
+            transform: rotateZ(60* $i + deg) rotateY(-90deg) rotateX(0deg);
+            border-left-color: #9c2f2f;
+        }
+    }
+    @keyframes preload-hide-#{$i}{
+        to {
+            transform: rotateZ(60* $i + deg) rotateY(-90deg) rotateX(0deg);
+            border-left-color: #9c2f2f;
+        }
+    }
+
+    @keyframes preload-cycle-#{$i}{
+
+        $startIndex: $i*5;
+        $reverseIndex: (80 - $i*5);
+
+        #{$startIndex * 1%} {
+            transform: rotateZ(60* $i + deg) rotateY(90deg) rotateX(0deg);
+            border-left-color: #9c2f2f;
+        }
+        #{$startIndex + 5%},
+        #{$reverseIndex * 1%} {
+            transform: rotateZ(60* $i + deg) rotateY(0) rotateX(0deg);
+            border-left-color: #f7484e;
+        }
+
+        #{$reverseIndex + 5%},
+        100% {
+            transform: rotateZ(60* $i + deg) rotateY(90deg) rotateX(0deg);
+            border-left-color: #9c2f2f;
+        }
+    }
+}
+
+@keyframes preload-flip {
+    0% {
+        transform: rotateY(0deg) rotateZ(-60deg);
+    }
+    100% {
+        transform: rotateY(360deg) rotateZ(-60deg);
+    }
+}
+
+body {
+    background: #efefef;
+}
+
+.preloader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    display: block;
+    width: 3.75em;
+    height: 4.25em;
+    margin-left: -1.875em;
+    margin-top: -2.125em;
+    transform-origin: center center;
+    transform: rotateY(180deg) rotateZ(-60deg);
+
+    .slice {
+        border-top: 1.125em solid transparent;
+        border-right: none;
+        border-bottom: 1em solid transparent;
+        border-left: 1.875em solid #f7484e;
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform-origin: left bottom;
+        border-radius: 3px 3px 0 0;
+    }
+
+    @for $i from 1 through 6 {
+        .slice:nth-child(#{$i}) {
+            transform: rotateZ(60* $i + deg) rotateY(0deg) rotateX(0);
+            animation: .15s linear .9 - $i*.08s preload-hide-#{$i} both 1;
+        }
+    }
+
+    &.loading {
+        animation: 2s preload-flip steps(2) infinite both;
+        @for $i from 1 through 6 {
+            .slice:nth-child(#{$i}) {
+                transform: rotateZ(60* $i + deg) rotateY(90deg) rotateX(0);
+                animation: 2s preload-cycle-#{$i} linear infinite both;
+            }
+        }
+    }
+
+}
+input[type=text], input[type=date], input[type=number] {
+    font-size: 18px;
+    height: 40px;
+}
+.x_title h2 {
+    font-weight: bold;
+    font-size: 24px;
+}
+.table {
+    font-size: 18px;
+}
+.cooking {
+    margin-top: 5px;
+}
+////////////////////////////////////////
+// CHECKBOX
+////////////////////////////////////////
+button.btn.btn-warning.submit {
+    width: 100%;
+    font-size: 20px;
+}
+.toggle a i {
+    font-size: 26px;
+    color: #374a5e;
+}
+*{	margin:0;	padding:0; }
+.x_panel{
+    background:#1abc9c;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: transparent;
+}
+body{
+   color:#fff;
+    //font-family: 'Gloria Hallelujah', cursive;
+    //font-family: 'Handlee', cursive;
+    font-family: 'Patrick Hand', cursive;
+    font-size:18px;
+}
+table#datatable-responsive {
+    background: #1abc9c;
+}
+textarea.form-control{
+    font-sphpize: 20px;
+}
+
+/*HEADER*/
+h2{	font-size:20px;	margin-bottom:50px;}
+a{color:#fff;}
+a:hover{color:#78e7d1;}
+
+.profile_info h2 {
+    font-size: 20px;
+}
+/*WRAPPER*/
+#wrapper{ margin: 40px auto 0;	width:500px; }
+#wrapper > div{	margin-bottom:10px;	}
+
+
+/*CHECKBOX*/
+input{ display:none; }
+
+label div{
+    width:23px;
+    height:23px;
+    display:inline-block;
+    border:2px solid #fff;
+    text-align:center;
+    line-height:20px;
+    margin-right:6px;
+    border-radius:3px;
+    cursor:pointer;
+}
+
+label i{ font-size:16px;	opacity:0; }
+label:hover div{ background:#16a085; }
+input:checked+label i{ opacity:1; }
+input:checked+label div{ background:#16a085; }
+h3.balance {
+    margin-bottom: 15px;
+}
+.fund-balance {
+    border: 1px solid#ccc;
+    padding: 5px;
+    margin: 15px;
+    margin-top: 20px;
+    border-radius: 15px;
+    background: #ccc;
+    width: 50%;
+    position: relative;
+    display: block;
+    text-align: center;
+    color: #374a5e;
+}
+
+
+//TABLE CSS
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+}
+table tr {
+    border: 1px solid #ddd;
+    padding: .35em;
+}
+table th,
+table td {
+    padding: .625em;
+    text-align: center;
+}
+table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+    table caption {
+        font-size: 1.3em;
+    }
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+    table td:before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+//.nav-sm .nav.side-menu  .nav.child_menu li a {
+//    font-size: 14px;
+//}
+.nav.child_menu>li>a, .nav-sm .nav.side-menu li a{
+    font-size: 18px;
+}

@@ -1,0 +1,16 @@
+/*Article CSS*/
+
+article .post {
+  float: left;
+}
+
+article .post .entry-content {
+  width: 100%;
+  float: left;
+}
+
+article .post .entry-footer {
+  width: 100%;
+  float: left;
+}
+

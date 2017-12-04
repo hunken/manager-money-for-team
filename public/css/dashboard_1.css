@@ -1,0 +1,43 @@
+.full-with{
+    display: block;
+    float: left;
+    width: 100%;
+}
+.form-add-post .title input {
+    height: 30px;
+    font-size: 1.7em;
+    padding: 21px 15px;
+}
+
+.full-with.fixed-bar {
+    position: fixed;
+    bottom: 0px;
+    background: #35495d;
+    padding: 5px;
+    /* border: 1px solid#c0c0c0; */
+}
+.full-with.fixed-bar button {
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+/* Right sídebar */
+.right-sidebar input{
+    padding: 10px;
+}
+.right-sidebar .tags input{
+    padding: 0px;
+}
+.search-optimize{
+    margin-top: 10px;
+}
+.search-optimize textarea{
+    width: 100%;
+    min-height: 200px;
+}
+.clean-url{
+    margin-bottom: 10px;
+}
+.clean-url input {
+    width: 100%;
+}

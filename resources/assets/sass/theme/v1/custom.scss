@@ -1,0 +1,17 @@
+/*Article CSS*/
+article {
+  .post {
+    float: left;
+    .entry-content {
+      width: 100%;
+      float: left;
+    }
+    .entry-footer {
+      width: 100%;
+      float: left;
+    }
+    &.active {
+    }
+  }
+}
+

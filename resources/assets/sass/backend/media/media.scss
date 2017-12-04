@@ -1,0 +1,93 @@
+/* MEDIA MANAGER */
+.media-uploader{
+    .media-action {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        z-index: 9999;
+        .choose-this {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            width: 30px;
+            height: 30px;
+            display: none;
+            &:checked{
+                display: block;
+            }
+            &.active{
+                display: block;
+            }
+        }
+    }
+
+    .add-media {
+        position: absolute;
+        font-size: 40px;
+        top: 25%;
+        left: 35px;
+        z-index: 9999;
+        color: #fff;
+        border-radius: 35px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        padding: 0px;
+        background: #00BCD4;
+        display: block;
+        user-select: none;
+        margin-top: 5px;
+        &.active{
+            display: block;
+            cursor: pointer;
+        }
+        span {
+            height: 20px;
+            line-height: 45px;
+            cursor: pointer;
+        }
+    }
+
+
+}
+.form-add-media{
+    #add-media{
+        display: block;
+        float: right;
+        margin-top: 30px;
+    }
+}
+
+.media-manager{
+    button {
+        border-radius: 0px;
+        margin-bottom: 10px!important;
+    }
+    .ZebraDialog_Body{
+        padding: 0px 40px;
+    }
+    .dropzone{
+        border: 2px dotted rgba(0,0,0,0.3);
+    }
+
+    .caption p {
+        word-break: break-word;
+    }
+    .view-first p {
+        text-overflow: ellipsis;
+        width: 180px;
+        overflow: hidden;
+    }
+    .pagination-bar{
+        width: 100%;
+        display: block;
+        float:left;
+    }
+    .nomedia {
+        margin: 0 auto;
+        text-align: center;
+        padding: 50px 0 100px;
+    }
+
+}
